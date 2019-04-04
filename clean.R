@@ -6,7 +6,7 @@ j<-as.integer(1)
 k<-as.integer(1)
 c<-as.integer(rownames(Sheet2))
 
-#convert mode choice to boolean
+#convert mode choice to boolean(0,1)
 for(i in c)
 	{
 		if(j==5){k<-k+1; j<-1}	#can be done with %
@@ -16,7 +16,7 @@ for(i in c)
 		else{Sheet2$Choice[i]<-0;}
 	}
 
-#convert airport choices to boolean
+#convert airport choices to boolean(0,1)
 j<-as.integer(1)
 k<-as.integer(1)
 for(i in c)
@@ -259,5 +259,132 @@ k<-as.integer(1)
  		if(j==5){k<-k+1; j<-1}	#can be done with %
  		j<-j+1;
  		Sheet2$TimeSharedTaxi[i]<-str_replace_all(Sheet1$TimeSharedTaxi[k], ":", "")
- 	} 		
+ 	}
+#copy flights per year
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$flightsYear[i]<-Sheet1$flightsYear[k]
+ 	}
+
+#copy days before return flight
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$daysBreturn[i]<-Sheet1$daysBreturn[k]
+ 	}
+
+#copy luggage
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$luggage[i]<-Sheet1$luggage[k]
+ 	}
+
+#convert own a vehicle? to boolean(0,1)
+j<-as.integer(1)
+k<-as.integer(1)
+for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		if(str_detect(Sheet1$ownVehicle[k],"Yes"))
+ 			{Sheet2$ownVehicle[i]<-1;}
+ 		else{Sheet2$ownVehicle[i]<-0;}
+ 	}
+
+#convert income bracket to slabs
+j<-as.integer(1)
+k<-as.integer(1)
+for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		if(str_detect(Sheet1$incomeB[k],"^\\<10"))
+			{Sheet2$incomeB[i]<-1}
+		else if(str_detect(Sheet1$incomeB[k],"\\$10"))
+			{Sheet2$incomeB[i]<-10}
+		else if(str_detect(Sheet1$incomeB[k],"38"))
+			{Sheet2$incomeB[i]<-40}
+		else if(str_detect(Sheet1$incomeB[k],"\\$92"))
+			{Sheet2$incomeB[i]<-100}
+ 	}
+
+#copy family size
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$familySize[i]<-Sheet1$familySize[k]
+ 	}	
+
+#convert age bracket into slabs
+j<-as.integer(1)
+k<-as.integer(1)
+for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		if(str_detect(Sheet1$ageB[k],"^<18"))
+			{Sheet2$ageB[i]<-10}
+		else if(str_detect(Sheet1$ageB[k],"^18"))
+			{Sheet2$ageB[i]<-20}
+		else if(str_detect(Sheet1$ageB[k],"25"))
+			{Sheet2$ageB[i]<-25}
+		else if(str_detect(Sheet1$ageB[k],"39"))
+			{Sheet2$ageB[i]<-40}
+		else if(str_detect(Sheet1$ageB[k],"51"))
+			{Sheet2$ageB[i]<-65}	
+ 	}
+
+#convert comfortable no. of passangers in shuttle bracket to slabs
+j<-as.integer(1)
+k<-as.integer(1)
+for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		if(str_detect(Sheet1$shuttleMaxPersonsB[k],"^+2"))
+			{Sheet2$shuttleMaxPersonsB[i]<-50}
+		else if(str_detect(Sheet1$shuttleMaxPersonsB[k],"^5"))
+			{Sheet2$shuttleMaxPersonsB[i]<-5}
+		else if(str_detect(Sheet1$shuttleMaxPersonsB[k],"^10"))
+			{Sheet2$shuttleMaxPersonsB[i]<-10}
+		else if(str_detect(Sheet1$shuttleMaxPersonsB[k],"^15"))
+			{Sheet2$shuttleMaxPersonsB[i]<-15}
+		else if(str_detect(Sheet1$shuttleMaxPersonsB[k],"^20"))
+			{Sheet2$shuttleMaxPersonsB[i]<-20}	
+	}		
+
+#copy pay Utica to Syracuse
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$payUticaSYR[i]<-Sheet1$payUticaSYR[k]
+ 	}
+
+#copy pay Utica to Albany
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$payUticaALB[i]<-Sheet1$payUticaALB[k]
+ 	}
+
 write.csv(Sheet2, file='/Users/Sunny/Desktop/dummyDataSets/Sheet2.csv', row.names=FALSE)	
