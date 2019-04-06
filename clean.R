@@ -6,7 +6,73 @@ j<-as.integer(1)
 k<-as.integer(1)
 c<-as.integer(rownames(Sheet2))
 
+#clean cost
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostPersonal[i]<-str_replace_all(Sheet1$CostPersonal[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostCarpool[i]<-str_replace_all(Sheet1$CostCarpool[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostTrainBus[i]<-str_replace_all(Sheet1$CostTrainBus[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostTaxi[i]<-str_replace_all(Sheet1$CostTaxi[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostSharedTaxi[i]<-str_replace_all(Sheet1$CostSharedTaxi[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostCS[i]<-str_replace_all(Sheet1$CostCS[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostSCS[i]<-str_replace_all(Sheet1$CostSCS[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+ 	 	 	 	 	 	
 #convert mode choice to boolean(0,1)
+j<-as.integer(1)
+k<-as.integer(1)
 for(i in c)
 	{
 		if(j==5){k<-k+1; j<-1}	#can be done with %
@@ -78,6 +144,14 @@ k<-as.integer(1)
  		Sheet2$DistALB[i]<-Sheet1$DistALB[k]
  	}		
 
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$DistEWR[i]<-Sheet1$DistEWR[k]
+ 	}
 #copy saftey
 j<-as.integer(1)
 k<-as.integer(1)
@@ -123,6 +197,24 @@ k<-as.integer(1)
  		j<-j+1;
  		Sheet2$SafteySharedTaxi[i]<-Sheet1$SafteySharedTaxi[k]
  	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$SafteyCS[i]<-Sheet1$SafteyCS[k]
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$SafteySCS[i]<-Sheet1$SafteySCS[k]
+ 	}	 	
 
 #copy privacy
 j<-as.integer(1)
@@ -170,6 +262,24 @@ k<-as.integer(1)
  		Sheet2$PrivacySharedTaxi[i]<-Sheet1$PrivacySharedTaxi[k]
  	}
 
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$PrivacyCS[i]<-Sheet1$PrivacyCS[k]
+ 	}
+ 	
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$PrivacySCS[i]<-Sheet1$PrivacySCS[k]
+ 	} 		
+
 #copy convinience
 j<-as.integer(1)
 k<-as.integer(1)
@@ -214,8 +324,27 @@ k<-as.integer(1)
  		if(j==5){k<-k+1; j<-1}	#can be done with %
  		j<-j+1;
  		Sheet2$ConvinienceSharedTaxi[i]<-Sheet1$ConvinienceSharedTaxi[k]
- 	} 
-#remove ':' fromTime
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$ConvinienceCS[i]<-Sheet1$ConvinienceCS[k]
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$ConvinienceSCS[i]<-Sheet1$ConvinienceSCS[k]
+ 	} 	 	 
+
+#remove ':' fromTime and copy
 j<-as.integer(1)
 k<-as.integer(1)
  	for(i in c)
@@ -260,6 +389,25 @@ k<-as.integer(1)
  		j<-j+1;
  		Sheet2$TimeSharedTaxi[i]<-str_replace_all(Sheet1$TimeSharedTaxi[k], ":", "")
  	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$TimeCS[i]<-str_replace_all(Sheet1$TimeCS[k], ":", "")
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$TimeSCS[i]<-str_replace_all(Sheet1$TimeSCS[k], ":", "")
+ 	} 	
+
 #copy flights per year
 j<-as.integer(1)
 k<-as.integer(1)
