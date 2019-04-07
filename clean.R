@@ -6,7 +6,7 @@ j<-as.integer(1)
 k<-as.integer(1)
 c<-as.integer(rownames(Sheet2))
 
-#clean cost
+#clean cost part1
 j<-as.integer(1)
 k<-as.integer(1)
  	for(i in c)
@@ -70,6 +70,29 @@ k<-as.integer(1)
  		Sheet2$CostSCS[i]<-str_replace_all(Sheet1$CostSCS[k], "[a-zA-Z-/+$(?;)]", "")
  	}
  	 	 	 	 	 	
+#clean cost part 2
+for(j in 1:length(Sheet2$CostPersonal))
+	if(Sheet2$CostPersonal[j]==""){Sheet2$CostPersonal[j]="NA"}
+
+for(j in 1:length(Sheet2$CostPersonal))
+	if(Sheet2$CostTrainBus[j]==""){Sheet2$CostTrainBus[j]="NA"}
+
+for(j in 1:length(Sheet2$CostPersonal))
+	if(Sheet2$CostCarpool[j]==""){Sheet2$CostCarpool[j]="NA"}
+
+for(j in 1:length(Sheet2$CostPersonal))
+	if(Sheet2$CostTaxi[j]==""){Sheet2$CostTaxi[j]="NA"}
+
+for(j in 1:length(Sheet2$CostPersonal))
+	if(Sheet2$CostSharedTaxi[j]==""){Sheet2$CostSharedTaxi[j]="NA"}
+
+for(j in 1:length(Sheet2$CostPersonal))
+	if(Sheet2$CostCS[j]==""){Sheet2$CostCS[j]="NA"}
+
+for(j in 1:length(Sheet2$CostPersonal))
+	if(Sheet2$CostSCS[j]==""){Sheet2$CostSCS[j]="NA"}
+
+
 #convert mode choice to boolean(0,1)
 j<-as.integer(1)
 k<-as.integer(1)
