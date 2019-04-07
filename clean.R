@@ -6,92 +6,15 @@ j<-as.integer(1)
 k<-as.integer(1)
 c<-as.integer(rownames(Sheet2))
 
-#clean cost part1
+#copy individual no.
 j<-as.integer(1)
 k<-as.integer(1)
  	for(i in c)
  	{
  		if(j==5){k<-k+1; j<-1}	#can be done with %
  		j<-j+1;
- 		Sheet2$CostPersonal[i]<-str_replace_all(Sheet1$CostPersonal[k], "[a-zA-Z-/+$(?;)]", "")
+ 		Sheet2$Individual[i]<-Sheet1$Individual[k]
  	}
-
-j<-as.integer(1)
-k<-as.integer(1)
- 	for(i in c)
- 	{
- 		if(j==5){k<-k+1; j<-1}	#can be done with %
- 		j<-j+1;
- 		Sheet2$CostCarpool[i]<-str_replace_all(Sheet1$CostCarpool[k], "[a-zA-Z-/+$(?;)]", "")
- 	}
-
-j<-as.integer(1)
-k<-as.integer(1)
- 	for(i in c)
- 	{
- 		if(j==5){k<-k+1; j<-1}	#can be done with %
- 		j<-j+1;
- 		Sheet2$CostTrainBus[i]<-str_replace_all(Sheet1$CostTrainBus[k], "[a-zA-Z-/+$(?;)]", "")
- 	}
-
-j<-as.integer(1)
-k<-as.integer(1)
- 	for(i in c)
- 	{
- 		if(j==5){k<-k+1; j<-1}	#can be done with %
- 		j<-j+1;
- 		Sheet2$CostTaxi[i]<-str_replace_all(Sheet1$CostTaxi[k], "[a-zA-Z-/+$(?;)]", "")
- 	}
-
-j<-as.integer(1)
-k<-as.integer(1)
- 	for(i in c)
- 	{
- 		if(j==5){k<-k+1; j<-1}	#can be done with %
- 		j<-j+1;
- 		Sheet2$CostSharedTaxi[i]<-str_replace_all(Sheet1$CostSharedTaxi[k], "[a-zA-Z-/+$(?;)]", "")
- 	}
-
-j<-as.integer(1)
-k<-as.integer(1)
- 	for(i in c)
- 	{
- 		if(j==5){k<-k+1; j<-1}	#can be done with %
- 		j<-j+1;
- 		Sheet2$CostCS[i]<-str_replace_all(Sheet1$CostCS[k], "[a-zA-Z-/+$(?;)]", "")
- 	}
-
-j<-as.integer(1)
-k<-as.integer(1)
- 	for(i in c)
- 	{
- 		if(j==5){k<-k+1; j<-1}	#can be done with %
- 		j<-j+1;
- 		Sheet2$CostSCS[i]<-str_replace_all(Sheet1$CostSCS[k], "[a-zA-Z-/+$(?;)]", "")
- 	}
- 	 	 	 	 	 	
-#clean cost part 2
-for(j in 1:length(Sheet2$CostPersonal))
-	if(Sheet2$CostPersonal[j]==""){Sheet2$CostPersonal[j]="NA"}
-
-for(j in 1:length(Sheet2$CostPersonal))
-	if(Sheet2$CostTrainBus[j]==""){Sheet2$CostTrainBus[j]="NA"}
-
-for(j in 1:length(Sheet2$CostPersonal))
-	if(Sheet2$CostCarpool[j]==""){Sheet2$CostCarpool[j]="NA"}
-
-for(j in 1:length(Sheet2$CostPersonal))
-	if(Sheet2$CostTaxi[j]==""){Sheet2$CostTaxi[j]="NA"}
-
-for(j in 1:length(Sheet2$CostPersonal))
-	if(Sheet2$CostSharedTaxi[j]==""){Sheet2$CostSharedTaxi[j]="NA"}
-
-for(j in 1:length(Sheet2$CostPersonal))
-	if(Sheet2$CostCS[j]==""){Sheet2$CostCS[j]="NA"}
-
-for(j in 1:length(Sheet2$CostPersonal))
-	if(Sheet2$CostSCS[j]==""){Sheet2$CostSCS[j]="NA"}
-
 
 #convert mode choice to boolean(0,1)
 j<-as.integer(1)
@@ -105,38 +28,14 @@ for(i in c)
 		else{Sheet2$Choice[i]<-0;}
 	}
 
-#convert airport choices to boolean(0,1)
-j<-as.integer(1)
-k<-as.integer(1)
-for(i in c)
- 	{
- 		if(j==5){k<-k+1; j<-1}	#can be done with %
- 		j<-j+1;
- 		if(Sheet1$Airport[k]=="SYR")
- 			{Sheet2$fromSYR[i]<-1;}
- 		else{Sheet2$fromSYR[i]<-0;}
- 	}
-
-j<-as.integer(1)
-k<-as.integer(1)
-for(i in c)
- 	{
- 		if(j==5){k<-k+1; j<-1}	#can be done with %
- 		j<-j+1;
- 		if(Sheet1$Airport[k]=="NYC")
- 			{Sheet2$fromNYC[i]<-1;}
- 		else{Sheet2$fromNYC[i]<-0;}
- 	}
-
+#convert airport choices
 j<-as.integer(1)
 k<-as.integer(1)
  	for(i in c)
  	{
  		if(j==5){k<-k+1; j<-1}	#can be done with %
  		j<-j+1;
- 		if(Sheet1$Airport[k]=="ALB")
- 			{Sheet2$fromALB[i]<-1;}
- 		else{Sheet2$fromALB[i]<-0;}
+ 		Sheet2$Airport[i]<-Sheet1$Airport[k]
  	}
 
 #copy distances
@@ -557,5 +456,71 @@ k<-as.integer(1)
  		j<-j+1;
  		Sheet2$payUticaALB[i]<-Sheet1$payUticaALB[k]
  	}
+
+#clean cost part1
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostPersonal[i]<-str_replace_all(Sheet1$CostPersonal[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostCarpool[i]<-str_replace_all(Sheet1$CostCarpool[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostTrainBus[i]<-str_replace_all(Sheet1$CostTrainBus[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostTaxi[i]<-str_replace_all(Sheet1$CostTaxi[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostSharedTaxi[i]<-str_replace_all(Sheet1$CostSharedTaxi[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostCS[i]<-str_replace_all(Sheet1$CostCS[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+ 		Sheet2$CostSCS[i]<-str_replace_all(Sheet1$CostSCS[k], "[a-zA-Z-/+$(?;)]", "")
+ 	}
+ 	 	 	 	 	 	
+#clean cost part 2
 
 write.csv(Sheet2, file='/Users/Sunny/Desktop/dummyDataSets/Sheet2.csv', row.names=FALSE)	
