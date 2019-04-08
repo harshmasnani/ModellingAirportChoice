@@ -26,8 +26,8 @@ f1<- mFormula(Choice ~ 1| +0+CostPersonal+CostTrainBus+CostCarpool+CostTaxi+Cost
 	ConvinienceSharedTaxi+TimePersonal+TimeTrainBus+TimeCarpool+TimeTaxi+TimeSharedTaxi+flightsYear+
 	daysBreturn+luggage+ownVehicle+incomeB+familySize+ageB+shuttleMaxPersonsB+payUticaSYR+
 	payUticaALB)
-f3<-mFormula(Choice ~ Time+Cost+random+Privacy)
+f3<-mFormula(Choice ~ Time+Privacy+Convinience|+0)
 ml.a<-mlogit(f3,Ta)
 
 #the output of mlogit on data
-summary(ml.a)
+#summary(ml.a)
