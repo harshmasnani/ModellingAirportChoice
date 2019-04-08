@@ -74,6 +74,21 @@ k<-as.integer(1)
  		j<-j+1;
  		Sheet2$DistEWR[i]<-Sheet1$DistEWR[k]
  	}
+
+#copyCOPY saftey
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+
+ 		if(Sheet2$Mode[i]=="Carpool"){Sheet2$Saftey[i]<-Sheet1$SafteyCarpool[k]}
+ 		if(Sheet2$Mode[i]=="Personal"){Sheet2$Saftey[i]<-Sheet1$SafteyPersonal[k]}
+ 		if(Sheet2$Mode[i]=="TrainBus"){Sheet2$Saftey[i]<-Sheet1$SafteyTrainBus[k]}
+ 		if(Sheet2$Mode[i]=="Taxi"){Sheet2$Saftey[i]<-Sheet1$SafteyTaxi[k]}
+ 	}
+
 #copy saftey
 j<-as.integer(1)
 k<-as.integer(1)
@@ -137,6 +152,21 @@ k<-as.integer(1)
  		j<-j+1;
  		Sheet2$SafteySCS[i]<-Sheet1$SafteySCS[k]
  	}	 	
+
+#copyCOPY privacy
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+
+ 		if(Sheet2$Mode[i]=="Carpool"){Sheet2$Privacy[i]<-Sheet1$PrivacyCarpool[k]}
+ 		if(Sheet2$Mode[i]=="Personal"){Sheet2$Privacy[i]<-Sheet1$PrivacyPersonal[k]}
+ 		if(Sheet2$Mode[i]=="TrainBus"){Sheet2$Privacy[i]<-Sheet1$PrivacyTrainBus[k]}
+ 		if(Sheet2$Mode[i]=="Taxi"){Sheet2$Privacy[i]<-Sheet1$PrivacyTaxi[k]}
+ 	}
+
 
 #copy privacy
 j<-as.integer(1)
@@ -202,6 +232,20 @@ k<-as.integer(1)
  		Sheet2$PrivacySCS[i]<-Sheet1$PrivacySCS[k]
  	} 		
 
+#copy CONVINIENCE convinience
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+
+ 		if(Sheet2$Mode[i]=="Carpool"){Sheet2$Convinience[i]<-Sheet1$ConvinienceCarpool[k]}
+ 		if(Sheet2$Mode[i]=="Personal"){Sheet2$Convinience[i]<-Sheet1$ConviniencePersonal[k]}
+ 		if(Sheet2$Mode[i]=="TrainBus"){Sheet2$Convinience[i]<-Sheet1$ConvinienceTrainBus[k]}
+ 		if(Sheet2$Mode[i]=="Taxi"){Sheet2$Convinience[i]<-Sheet1$ConvinienceTaxi[k]}
+ 	}
+
 #copy convinience
 j<-as.integer(1)
 k<-as.integer(1)
@@ -265,7 +309,20 @@ k<-as.integer(1)
  		j<-j+1;
  		Sheet2$ConvinienceSCS[i]<-Sheet1$ConvinienceSCS[k]
  	} 	 	 
+#remove ':' fromTime and copyCOPY
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
 
+ 		if(Sheet2$Mode[i]=="Carpool"){Sheet2$Time[i]<-str_replace_all(Sheet1$TimeCarpool[k], ":", "")}
+ 		if(Sheet2$Mode[i]=="Personal"){Sheet2$Time[i]<-str_replace_all(Sheet1$TimePersonal[k], ":", "")}
+ 		if(Sheet2$Mode[i]=="TrainBus"){Sheet2$Time[i]<-str_replace_all(Sheet1$TimeTrainBus[k], ":", "")}
+ 		if(Sheet2$Mode[i]=="Taxi"){Sheet2$Time[i]<-str_replace_all(Sheet1$TimeTaxi[k], ":", "")}
+ 	}
+ 	
 #remove ':' fromTime and copy
 j<-as.integer(1)
 k<-as.integer(1)
@@ -457,7 +514,21 @@ k<-as.integer(1)
  		Sheet2$payUticaALB[i]<-Sheet1$payUticaALB[k]
  	}
 
-#clean cost part1
+#clean and copyCOPY costs
+j<-as.integer(1)
+k<-as.integer(1)
+ 	for(i in c)
+ 	{
+ 		if(j==5){k<-k+1; j<-1}	#can be done with %
+ 		j<-j+1;
+
+ 		if(Sheet2$Mode[i]=="Carpool"){Sheet2$Cost[i]<-str_replace_all(Sheet1$CostCarpool[k], "[a-zA-Z-/+$(?;)]", "")}
+ 		if(Sheet2$Mode[i]=="Personal"){Sheet2$Cost[i]<-str_replace_all(Sheet1$CostPersonal[k], "[a-zA-Z-/+$(?;)]", "")}
+ 		if(Sheet2$Mode[i]=="TrainBus"){Sheet2$Cost[i]<-str_replace_all(Sheet1$CostTrainBus[k], "[a-zA-Z-/+$(?;)]", "")}
+ 		if(Sheet2$Mode[i]=="Taxi"){Sheet2$Cost[i]<-str_replace_all(Sheet1$CostTaxi[k], "[a-zA-Z-/+$(?;)]", "")}
+ 	}
+
+#clean and copy
 j<-as.integer(1)
 k<-as.integer(1)
  	for(i in c)
@@ -520,7 +591,5 @@ k<-as.integer(1)
  		j<-j+1;
  		Sheet2$CostSCS[i]<-str_replace_all(Sheet1$CostSCS[k], "[a-zA-Z-/+$(?;)]", "")
  	}
- 	 	 	 	 	 	
-#clean cost part 2
-
+ 	
 write.csv(Sheet2, file='/Users/Sunny/Desktop/dummyDataSets/Sheet2.csv', row.names=FALSE)	
